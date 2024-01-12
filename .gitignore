@@ -1,6 +1,7 @@
 .git
 src/test
 .idea
+.gradle
 .vscode
 node_modules
 antlr4-parser-tool.iml

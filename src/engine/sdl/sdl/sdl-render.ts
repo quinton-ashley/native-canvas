@@ -19,8 +19,8 @@ import {SDL_Surface_ptr} from './sdl-surface';
 import {SDL_Window_ptr} from './sdl-video';
 
 
-const FFI = require('ffi-napi');
-const ref = require('ref-napi');
+const FFI = require("@lwahonen/ffi-napi");
+const ref = require('@lwahonen/ref-napi');
 const ArrayType = require('ref-array-di')(ref);
 const Struct = require('ref-struct-di')(ref);
 const Union = require('ref-union-di')(ref);

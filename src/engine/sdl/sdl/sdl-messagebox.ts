@@ -2,7 +2,7 @@ import {loadLibrary} from './lib-loader';
 import {int32, int32_ptr, string, Uint32, Uint8} from './types';
 import {SDL_Window_ptr} from './sdl-video';
 
-const ref = require('ref-napi');
+const ref = require('@lwahonen/ref-napi');
 const ArrayType = require('ref-array-di')(ref);
 const Struct = require('ref-struct-di')(ref);
 

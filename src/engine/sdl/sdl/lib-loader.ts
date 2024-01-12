@@ -1,4 +1,4 @@
-const ffi = require('ffi-napi');
+const ffi = require("@lwahonen/ffi-napi");
 
 const SDL_LIBS_PATH = __dirname;
 
@@ -44,4 +44,3 @@ function getLinuxLibraryPath(): string {
 
     return `${dir}/libs/linux/${arch}/${libName}.so`;
 }
-

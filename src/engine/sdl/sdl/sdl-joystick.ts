@@ -1,7 +1,7 @@
 import {int32, int32_ptr, Sint16, string, uint32, Uint8, voit} from './types';
 import {loadLibrary} from './lib-loader';
 
-const ref = require('ref-napi');
+const ref = require('@lwahonen/ref-napi');
 const ArrayType = require('ref-array-di')(ref);
 const Struct = require('ref-struct-di')(ref);
 
