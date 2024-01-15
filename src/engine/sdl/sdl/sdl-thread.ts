@@ -1,8 +1,8 @@
 import {int32, int32_ptr, string, uint32, ulong, voit, voit_ptr} from './types';
 import {loadLibrary} from './lib-loader';
 
-const FFI = require("@lwahonen/ffi-napi");
-const ref = require('@lwahonen/ref-napi');
+const FFI = require('ffi-napi');
+const ref = require('ref-napi');
 const ArrayType = require('ref-array-di')(ref);
 const Struct = require('ref-struct-di')(ref);
 const Union = require('ref-union-di')(ref);

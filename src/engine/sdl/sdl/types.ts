@@ -1,7 +1,7 @@
-const ref = require('@lwahonen/ref-napi');
+const ref = require('ref-napi');
 const ArrayType = require('ref-array-di')(ref);
 
-// const ref = require('@lwahonen/ref-napi');
+// const ref = require('ref-napi');
 export const voit = ref.types.void;
 export const int32 = ref.types.int32;
 export const uint32 = ref.types.uint32;

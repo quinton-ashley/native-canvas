@@ -19,8 +19,8 @@ import {SDL_FingerID, SDL_TouchID} from './sdl-touch';
 import {SDL_JoystickID} from './sdl-joystick';
 import {SDL_Keysym} from './sdl-keyboard';
 
-const FFI = require("@lwahonen/ffi-napi");
-const ref = require('@lwahonen/ref-napi');
+const FFI = require('ffi-napi');
+const ref = require('ref-napi');
 const ArrayType = require('ref-array-di')(ref);
 const Struct = require('ref-struct-di')(ref);
 const Union = require('ref-union-di')(ref);
@@ -415,3 +415,4 @@ loadLibrary({
     SDL_EventState: [Uint8, [Uint32, int32]],
     SDL_RegisterEvents: [Uint32, [int32]],
 }, SDL);
+

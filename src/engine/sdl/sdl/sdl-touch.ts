@@ -1,7 +1,7 @@
 import {float, int32, longlong} from './types';
 import {loadLibrary} from './lib-loader';
 
-const ref = require('@lwahonen/ref-napi');
+const ref = require('ref-napi');
 const Struct = require('ref-struct-di')(ref);
 const SDL = {} as any;
 

@@ -13,7 +13,7 @@ import {
 } from './types';
 import {loadLibrary} from './lib-loader';
 
-const ref = require('@lwahonen/ref-napi');
+const ref = require('ref-napi');
 const ArrayType = require('ref-array-di')(ref);
 const Struct = require('ref-struct-di')(ref);
 

@@ -1,4 +1,4 @@
-const ffi = require("@lwahonen/ffi-napi");
+const ffi = require('ffi-napi');
 
 const SDL_LIBS_PATH = __dirname;
 
@@ -31,10 +31,9 @@ function getWindowsLibraryPath(): string {
 function getOSXLibraryPath(): string {
     const dir = SDL_LIBS_PATH;
     const arch = process.arch;
-    const libName = 'libSDL2';
-    const version = '2.0';
+    const version = '3.1.0.0';
 
-    return `${dir}/libs/osx/${arch}/${libName}-${version}.dylib`;
+    return `${dir}/libs/osx/${arch}/libSDL${version}.dylib`;
 }
 
 function getLinuxLibraryPath(): string {

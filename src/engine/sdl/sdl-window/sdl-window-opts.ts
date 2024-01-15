@@ -17,7 +17,7 @@ export function sdlWindowDefaults(): WindowOptions {
     opts.resizable = true;
     opts.borderless = false;
     opts.minimized = false;
-    opts.allowHighDPI = false;
+    opts.allowHighDPI = true;
     opts.grabInputFocus = false;
     opts.fitCanvasInWindow = true;
     opts.scaleCanvasToWindowSize = false;

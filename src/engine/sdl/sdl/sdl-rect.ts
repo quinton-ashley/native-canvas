@@ -1,7 +1,7 @@
 import {Rect} from '../shape/rect';
 import {int32} from './types';
 
-const ref = require('@lwahonen/ref-napi');
+const ref = require('ref-napi');
 const Struct = require('ref-struct-di')(ref);
 
 export const SDL_Point = exports.SDL_Point = Struct({
