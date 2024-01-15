@@ -20,8 +20,7 @@ export const SDL_Finger = Struct({
 export const SDL_Finger_ptr = ref.refType(SDL_Finger);
 
 loadLibrary({
-    SDL_GetNumTouchDevices: [int32, []],
-    SDL_GetTouchDevice: [SDL_TouchID, [int32]],
+    SDL_GetTouchDevices: [SDL_TouchID, [int32]],
     SDL_GetNumTouchFingers: [int32, [SDL_TouchID]],
     SDL_GetTouchFinger: [SDL_Finger_ptr, [SDL_TouchID, int32]],
 }, SDL);
