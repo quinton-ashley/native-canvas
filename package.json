@@ -1,6 +1,6 @@
 {
   "name": "native-canvas",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "A canvas library allows for a HTML canvas to run natively on NodeJs, without a WebBrowser",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,8 @@
     "libs": "cp -r src/engine/sdl/sdl/libs dist/engine/sdl/sdl",
     "build": "rm -rf dist && mkdir -p dist/engine/sdl/sdl/libs && cp -r src/engine/sdl/sdl/libs dist/engine/sdl/sdl && tsc",
     "compile": "tsc",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "f": "npm run build && node samples/clip-example.js"
   },
   "files": [
     "dist",

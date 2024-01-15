@@ -10,7 +10,7 @@ import {
     SDL_CreateWindow,
     SDL_DestroyWindow,
     SDL_ENABLE,
-    SDL_EventState,
+    SDL_SetEventEnabled,
     SDL_EventType, SDL_GetWindowBordersSize,
     SDL_GetWindowFlags, SDL_GetWindowID,
     SDL_GetWindowMaximumSize,
@@ -20,7 +20,7 @@ import {
     SDL_GetWindowTitle, SDL_HideWindow,
     SDL_MaximizeWindow,
     SDL_MinimizeWindow,
-    SDL_RaiseWindow, SDL_RenderCopy,
+    SDL_RaiseWindow, SDL_RenderTexture,
     SDL_RestoreWindow, SDL_SetWindowBordered,
     SDL_SetWindowFullscreen,
     SDL_SetWindowGrab,
@@ -148,12 +148,12 @@ export class SdlWindow extends EventEmitter implements NativeWindow {
     private _onmouseover: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
     private _onmouseup: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
     private _onmousewheel: ((this: Window, ev: Event) => any) | null;
-    private _onmsgesturechange: ((this: Window, ev: Event) => any) | null;
-    private _onmsgesturedoubletap: ((this: Window, ev: Event) => any) | null;
-    private _onmsgestureend: ((this: Window, ev: Event) => any) | null;
-    private _onmsgesturehold: ((this: Window, ev: Event) => any) | null;
-    private _onmsgesturestart: ((this: Window, ev: Event) => any) | null;
-    private _onmsgesturetap: ((this: Window, ev: Event) => any) | null;
+    // private _onmsgesturechange: ((this: Window, ev: Event) => any) | null;
+    // private _onmsgesturedoubletap: ((this: Window, ev: Event) => any) | null;
+    // private _onmsgestureend: ((this: Window, ev: Event) => any) | null;
+    // private _onmsgesturehold: ((this: Window, ev: Event) => any) | null;
+    // private _onmsgesturestart: ((this: Window, ev: Event) => any) | null;
+    // private _onmsgesturetap: ((this: Window, ev: Event) => any) | null;
     private _onmsinertiastart: ((this: Window, ev: Event) => any) | null;
     private _onmspointercancel: ((this: Window, ev: Event) => any) | null;
     private _onmspointerdown: ((this: Window, ev: Event) => any) | null;
@@ -1604,53 +1604,53 @@ export class SdlWindow extends EventEmitter implements NativeWindow {
         this._onmousewheel = value;
     }
 
-    get onmsgesturechange(): ((this: Window, ev: Event) => any) | null {
-        return this._onmsgesturechange;
-    }
+    // get onmsgesturechange(): ((this: Window, ev: Event) => any) | null {
+    //     return this._onmsgesturechange;
+    // }
 
-    set onmsgesturechange(value: ((this: Window, ev: Event) => any) | null) {
-        this._onmsgesturechange = value;
-    }
+    // set onmsgesturechange(value: ((this: Window, ev: Event) => any) | null) {
+    //     this._onmsgesturechange = value;
+    // }
 
-    get onmsgesturedoubletap(): ((this: Window, ev: Event) => any) | null {
-        return this._onmsgesturedoubletap;
-    }
+    // get onmsgesturedoubletap(): ((this: Window, ev: Event) => any) | null {
+    //     return this._onmsgesturedoubletap;
+    // }
 
-    set onmsgesturedoubletap(value: ((this: Window, ev: Event) => any) | null) {
-        this._onmsgesturedoubletap = value;
-    }
+    // set onmsgesturedoubletap(value: ((this: Window, ev: Event) => any) | null) {
+    //     this._onmsgesturedoubletap = value;
+    // }
 
-    get onmsgestureend(): ((this: Window, ev: Event) => any) | null {
-        return this._onmsgestureend;
-    }
+    // get onmsgestureend(): ((this: Window, ev: Event) => any) | null {
+    //     return this._onmsgestureend;
+    // }
 
-    set onmsgestureend(value: ((this: Window, ev: Event) => any) | null) {
-        this._onmsgestureend = value;
-    }
+    // set onmsgestureend(value: ((this: Window, ev: Event) => any) | null) {
+    //     this._onmsgestureend = value;
+    // }
 
-    get onmsgesturehold(): ((this: Window, ev: Event) => any) | null {
-        return this._onmsgesturehold;
-    }
+    // get onmsgesturehold(): ((this: Window, ev: Event) => any) | null {
+    //     return this._onmsgesturehold;
+    // }
 
-    set onmsgesturehold(value: ((this: Window, ev: Event) => any) | null) {
-        this._onmsgesturehold = value;
-    }
+    // set onmsgesturehold(value: ((this: Window, ev: Event) => any) | null) {
+    //     this._onmsgesturehold = value;
+    // }
 
-    get onmsgesturestart(): ((this: Window, ev: Event) => any) | null {
-        return this._onmsgesturestart;
-    }
+    // get onmsgesturestart(): ((this: Window, ev: Event) => any) | null {
+    //     return this._onmsgesturestart;
+    // }
 
-    set onmsgesturestart(value: ((this: Window, ev: Event) => any) | null) {
-        this._onmsgesturestart = value;
-    }
+    // set onmsgesturestart(value: ((this: Window, ev: Event) => any) | null) {
+    //     this._onmsgesturestart = value;
+    // }
 
-    get onmsgesturetap(): ((this: Window, ev: Event) => any) | null {
-        return this._onmsgesturetap;
-    }
+    // get onmsgesturetap(): ((this: Window, ev: Event) => any) | null {
+    //     return this._onmsgesturetap;
+    // }
 
-    set onmsgesturetap(value: ((this: Window, ev: Event) => any) | null) {
-        this._onmsgesturetap = value;
-    }
+    // set onmsgesturetap(value: ((this: Window, ev: Event) => any) | null) {
+    //     this._onmsgesturetap = value;
+    // }
 
     get onmsinertiastart(): ((this: Window, ev: Event) => any) | null {
         return this._onmsinertiastart;

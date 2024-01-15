@@ -54,7 +54,7 @@ export function SDL_CreateSoftwareRenderer(surfacePtr: any) {
     return SDL.SDL_CreateSoftwareRenderer(surfacePtr);
 }
 
-export function SDL_RenderCopy(rendererPtr: any, texturePtr: any, src: Rect, dest: Rect): number {
+export function SDL_RenderTexture(rendererPtr: any, texturePtr: any, src: Rect, dest: Rect): number {
     if (src) {
         src = createSDL_RectPtr(src);
     }
@@ -63,7 +63,7 @@ export function SDL_RenderCopy(rendererPtr: any, texturePtr: any, src: Rect, des
         dest = createSDL_RectPtr(dest);
     }
 
-    return SDL.SDL_RenderCopy(rendererPtr, texturePtr, src, dest);
+    return SDL.SDL_RenderTexture(rendererPtr, texturePtr, src, dest);
 }
 
 export function SDL_CreateRenderer(windowPtr: any, driver: number, flags: number): any {
@@ -116,40 +116,40 @@ export function SDL_DestroyTexture(texturePtr: any): number {
     return SDL.SDL_DestroyTexture(texturePtr);
 }
 
-export function SDL_RenderGetLogicalSize(rendererPtr: any): { w: number, h: number } {
+export function SDL_GetRenderLogicalPresentation(rendererPtr: any): { w: number, h: number } {
     const w = ref.alloc('int');
     const h = ref.alloc('int');
-    SDL.SDL_RenderGetLogicalSize(rendererPtr, w, h);
+    SDL.SDL_GetRenderLogicalPresentation(rendererPtr, w, h);
 
     return {w: w.deref(), h: h.deref()};
 }
 
-export function SDL_GetRendererOutputSize(rendererPtr: any): { w: number, h: number } {
+export function SDL_GetCurrentRenderOutputSize(rendererPtr: any): { w: number, h: number } {
     const w = ref.alloc('int');
     const h = ref.alloc('int');
-    SDL.SDL_GetRendererOutputSize(rendererPtr, w, h);
+    SDL.SDL_GetCurrentRenderOutputSize(rendererPtr, w, h);
 
     return {w: w.deref(), h: h.deref()};
 }
 
-export function SDL_RenderGetIntegerScale(rendererPtr: any): boolean {
-    return !!SDL.SDL_RenderGetIntegerScale(rendererPtr);
-}
+// export function SDL_GetRenderIntegerScale(rendererPtr: any): boolean {
+//     return !!SDL.SDL_GetRenderIntegerScale(rendererPtr);
+// }
 
-export function SDL_RenderGetScale(renderPtr: any): { x: number, y: number } {
+export function SDL_GetRenderScale(renderPtr: any): { x: number, y: number } {
     const x = ref.alloc('float');
     const y = ref.alloc('float');
-    SDL.SDL_RenderGetScale(renderPtr, x, y);
+    SDL.SDL_GetRenderScale(renderPtr, x, y);
 
     return {x: x.deref(), y: y.deref()};
 }
 
-export function SDL_RenderSetScale(renderPtr: any, x: number, y: number) {
-    return SDL.SDL_RenderSetScale(renderPtr, x, y);
+export function SDL_SetRenderScale(renderPtr: any, x: number, y: number) {
+    return SDL.SDL_SetRenderScale(renderPtr, x, y);
 }
 
-export function SDL_RenderSetLogicalSize(renderPtr: any, w: number, h: number) {
-    return SDL.SDL_RenderSetLogicalSize(renderPtr, w, h);
+export function SDL_SetRenderLogicalPresentation(renderPtr: any, w: number, h: number) {
+    return SDL.SDL_SetRenderLogicalPresentation(renderPtr, w, h);
 }
 
 export function SDL_UpdateTexture(texturePtr: any, rect: Rect, pixels: Buffer, pitch: number) {
@@ -204,14 +204,13 @@ export const SDL_Texture_ptr = ref.refType(SDL_Texture);
 
 loadLibrary({
     SDL_GetNumRenderDrivers: [int32, []],
-    SDL_GetRenderDriverInfo: [int32, [int32, SDL_RendererInfo_ptr]],
     SDL_CreateWindowAndRenderer: [int32, [int32, int32, Uint32, SDL_Window_ptr_ptr, SDL_Renderer_ptr_ptr]],
     SDL_CreateRenderer: [SDL_Renderer_ptr, [SDL_Window_ptr, int32, Uint32]],
     SDL_CreateSoftwareRenderer: [SDL_Renderer_ptr, [SDL_Surface_ptr]],
     SDL_GetRenderer: [SDL_Renderer_ptr, [SDL_Window_ptr]],
     SDL_GetRendererInfo: [int32, [SDL_Renderer_ptr, SDL_RendererInfo_ptr]],
-    SDL_RenderGetIntegerScale: [bool, [SDL_Renderer_ptr]],
-    SDL_GetRendererOutputSize: [int32, [SDL_Renderer_ptr, int32_ptr, int32_ptr]],
+    // SDL_GetRenderIntegerScale: [bool, [SDL_Renderer_ptr]],
+    SDL_GetCurrentRenderOutputSize: [int32, [SDL_Renderer_ptr, int32_ptr, int32_ptr]],
     SDL_CreateTexture: [SDL_Texture_ptr, [SDL_Renderer_ptr, Uint32, int32, int32, int32]],
     SDL_CreateTextureFromSurface: [SDL_Texture_ptr, [SDL_Renderer_ptr, SDL_Surface_ptr]],
     SDL_QueryTexture: [int32, [SDL_Texture_ptr, Uint32_ptr, int32_ptr, int32_ptr, int32_ptr]],
@@ -225,37 +224,33 @@ loadLibrary({
     SDL_UpdateYUVTexture: [int32, [SDL_Texture_ptr, SDL_Rect_ptr, Uint8_ptr, int32, Uint8_ptr, int32, Uint8_ptr, int32]],
     SDL_LockTexture: [int32, [SDL_Texture_ptr, SDL_Rect_ptr, voit_ptr_ptr, int32_ptr]],
     SDL_UnlockTexture: [voit, [SDL_Texture_ptr]],
-    SDL_RenderTargetSupported: [uint32, [SDL_Renderer_ptr]],
     SDL_SetRenderTarget: [int32, [SDL_Renderer_ptr, SDL_Texture_ptr]],
     SDL_GetRenderTarget: [SDL_Texture_ptr, [SDL_Renderer_ptr]],
-    SDL_RenderSetLogicalSize: [int32, [SDL_Renderer_ptr, int32, int32]],
-    SDL_RenderGetLogicalSize: [voit, [SDL_Renderer_ptr, int32_ptr, int32_ptr]],
-    SDL_RenderSetViewport: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr]],
-    SDL_RenderGetViewport: [voit, [SDL_Renderer_ptr, SDL_Rect_ptr]],
-    SDL_RenderSetClipRect: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr]],
-    SDL_RenderGetClipRect: [voit, [SDL_Renderer_ptr, SDL_Rect_ptr]],
-    SDL_RenderIsClipEnabled: [uint32, [SDL_Renderer_ptr]],
-    SDL_RenderSetScale: [int32, [SDL_Renderer_ptr, float, float]],
-    SDL_RenderGetScale: [voit, [SDL_Renderer_ptr, float_ptr, float_ptr]],
+    SDL_SetRenderLogicalPresentation: [int32, [SDL_Renderer_ptr, int32, int32]],
+    SDL_GetRenderLogicalPresentation: [voit, [SDL_Renderer_ptr, int32_ptr, int32_ptr]],
+    SDL_SetRenderViewport: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr]],
+    SDL_GetRenderViewport: [voit, [SDL_Renderer_ptr, SDL_Rect_ptr]],
+    SDL_SetRenderClipRect: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr]],
+    SDL_GetRenderClipRect: [voit, [SDL_Renderer_ptr, SDL_Rect_ptr]],
+    SDL_RenderClipEnabled: [uint32, [SDL_Renderer_ptr]],
+    SDL_SetRenderScale: [int32, [SDL_Renderer_ptr, float, float]],
+    SDL_GetRenderScale: [voit, [SDL_Renderer_ptr, float_ptr, float_ptr]],
     SDL_SetRenderDrawColor: [int32, [SDL_Renderer_ptr, Uint8, Uint8, Uint8, Uint8]],
     SDL_GetRenderDrawColor: [int32, [SDL_Renderer_ptr, Uint8_ptr, Uint8_ptr, Uint8_ptr, Uint8_ptr]],
     SDL_SetRenderDrawBlendMode: [int32, [SDL_Renderer_ptr, uint32]],
     SDL_GetRenderDrawBlendMode: [int32, [SDL_Renderer_ptr, uint32_ptr]],
     SDL_RenderClear: [int32, [SDL_Renderer_ptr]],
-    SDL_RenderDrawPoint: [int32, [SDL_Renderer_ptr, int32, int32]],
-    SDL_RenderDrawPoints: [int32, [SDL_Renderer_ptr, SDL_Point_ptr, int32]],
-    SDL_RenderDrawLine: [int32, [SDL_Renderer_ptr, int32, int32, int32, int32]],
-    SDL_RenderDrawLines: [int32, [SDL_Renderer_ptr, SDL_Point_ptr, int32]],
-    SDL_RenderDrawRect: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr]],
-    SDL_RenderDrawRects: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr, int32]],
+    SDL_RenderPoint: [int32, [SDL_Renderer_ptr, int32, int32]],
+    SDL_RenderPoints: [int32, [SDL_Renderer_ptr, SDL_Point_ptr, int32]],
+    SDL_RenderLine: [int32, [SDL_Renderer_ptr, int32, int32, int32, int32]],
+    SDL_RenderLines: [int32, [SDL_Renderer_ptr, SDL_Point_ptr, int32]],
+    SDL_RenderRect: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr]],
+    SDL_RenderRects: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr, int32]],
     SDL_RenderFillRect: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr]],
     SDL_RenderFillRects: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr, int32]],
-    SDL_RenderCopy: [int32, [SDL_Renderer_ptr, SDL_Texture_ptr, SDL_Rect_ptr, SDL_Rect_ptr]],
-    SDL_RenderCopyEx: [int32, [SDL_Renderer_ptr, SDL_Texture_ptr, SDL_Rect_ptr, SDL_Rect_ptr, double, SDL_Point_ptr, uint32]],
+    SDL_RenderTexture: [int32, [SDL_Renderer_ptr, SDL_Texture_ptr, SDL_Rect_ptr, SDL_Rect_ptr]],
     SDL_RenderReadPixels: [int32, [SDL_Renderer_ptr, SDL_Rect_ptr, Uint32, voit_ptr, int32]],
     SDL_RenderPresent: [voit, [SDL_Renderer_ptr]],
     SDL_DestroyTexture: [voit, [SDL_Texture_ptr]],
     SDL_DestroyRenderer: [voit, [SDL_Renderer_ptr]],
-    SDL_GL_BindTexture: [int32, [SDL_Texture_ptr, float_ptr, float_ptr]],
-    SDL_GL_UnbindTexture: [int32, [SDL_Texture_ptr]],
 }, SDL);

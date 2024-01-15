@@ -137,12 +137,12 @@ export class SdlCanvas implements HTMLCanvasElement {
     private _onmouseup: ((this: HTMLElement, ev: MouseEvent) => any) | null;
     private _onmousewheel: ((this: HTMLElement, ev: WheelEvent) => any) | null;
     private _onmscontentzoom: ((this: HTMLElement, ev: Event) => any) | null;
-    private _onmsgesturechange: ((this: Element, ev: Event) => any) | null;
-    private _onmsgesturedoubletap: ((this: Element, ev: Event) => any) | null;
-    private _onmsgestureend: ((this: Element, ev: Event) => any) | null;
-    private _onmsgesturehold: ((this: Element, ev: Event) => any) | null;
-    private _onmsgesturestart: ((this: Element, ev: Event) => any) | null;
-    private _onmsgesturetap: ((this: Element, ev: Event) => any) | null;
+    // private _onmsgesturechange: ((this: Element, ev: Event) => any) | null;
+    // private _onmsgesturedoubletap: ((this: Element, ev: Event) => any) | null;
+    // private _onmsgestureend: ((this: Element, ev: Event) => any) | null;
+    // private _onmsgesturehold: ((this: Element, ev: Event) => any) | null;
+    // private _onmsgesturestart: ((this: Element, ev: Event) => any) | null;
+    // private _onmsgesturetap: ((this: Element, ev: Event) => any) | null;
     private _onmsgotpointercapture: ((this: Element, ev: Event) => any) | null;
     private _onmsinertiastart: ((this: Element, ev: Event) => any) | null;
     private _onmslostpointercapture: ((this: Element, ev: Event) => any) | null;
@@ -951,53 +951,53 @@ export class SdlCanvas implements HTMLCanvasElement {
         this._onmscontentzoom = value;
     }
 
-    get onmsgesturechange(): ((this: Element, ev: Event) => any) | null {
-        return this._onmsgesturechange;
-    }
+    // get onmsgesturechange(): ((this: Element, ev: Event) => any) | null {
+    //     return this._onmsgesturechange;
+    // }
 
-    set onmsgesturechange(value: ((this: Element, ev: Event) => any) | null) {
-        this._onmsgesturechange = value;
-    }
+    // set onmsgesturechange(value: ((this: Element, ev: Event) => any) | null) {
+    //     this._onmsgesturechange = value;
+    // }
 
-    get onmsgesturedoubletap(): ((this: Element, ev: Event) => any) | null {
-        return this._onmsgesturedoubletap;
-    }
+    // get onmsgesturedoubletap(): ((this: Element, ev: Event) => any) | null {
+    //     return this._onmsgesturedoubletap;
+    // }
 
-    set onmsgesturedoubletap(value: ((this: Element, ev: Event) => any) | null) {
-        this._onmsgesturedoubletap = value;
-    }
+    // set onmsgesturedoubletap(value: ((this: Element, ev: Event) => any) | null) {
+    //     this._onmsgesturedoubletap = value;
+    // }
 
-    get onmsgestureend(): ((this: Element, ev: Event) => any) | null {
-        return this._onmsgestureend;
-    }
+    // get onmsgestureend(): ((this: Element, ev: Event) => any) | null {
+    //     return this._onmsgestureend;
+    // }
 
-    set onmsgestureend(value: ((this: Element, ev: Event) => any) | null) {
-        this._onmsgestureend = value;
-    }
+    // set onmsgestureend(value: ((this: Element, ev: Event) => any) | null) {
+    //     this._onmsgestureend = value;
+    // }
 
-    get onmsgesturehold(): ((this: Element, ev: Event) => any) | null {
-        return this._onmsgesturehold;
-    }
+    // get onmsgesturehold(): ((this: Element, ev: Event) => any) | null {
+    //     return this._onmsgesturehold;
+    // }
 
-    set onmsgesturehold(value: ((this: Element, ev: Event) => any) | null) {
-        this._onmsgesturehold = value;
-    }
+    // set onmsgesturehold(value: ((this: Element, ev: Event) => any) | null) {
+    //     this._onmsgesturehold = value;
+    // }
 
-    get onmsgesturestart(): ((this: Element, ev: Event) => any) | null {
-        return this._onmsgesturestart;
-    }
+    // get onmsgesturestart(): ((this: Element, ev: Event) => any) | null {
+    //     return this._onmsgesturestart;
+    // }
 
-    set onmsgesturestart(value: ((this: Element, ev: Event) => any) | null) {
-        this._onmsgesturestart = value;
-    }
+    // set onmsgesturestart(value: ((this: Element, ev: Event) => any) | null) {
+    //     this._onmsgesturestart = value;
+    // }
 
-    get onmsgesturetap(): ((this: Element, ev: Event) => any) | null {
-        return this._onmsgesturetap;
-    }
+    // get onmsgesturetap(): ((this: Element, ev: Event) => any) | null {
+    //     return this._onmsgesturetap;
+    // }
 
-    set onmsgesturetap(value: ((this: Element, ev: Event) => any) | null) {
-        this._onmsgesturetap = value;
-    }
+    // set onmsgesturetap(value: ((this: Element, ev: Event) => any) | null) {
+    //     this._onmsgesturetap = value;
+    // }
 
     get onmsgotpointercapture(): ((this: Element, ev: Event) => any) | null {
         return this._onmsgotpointercapture;
@@ -2263,4 +2263,3 @@ export class SdlCanvas implements HTMLCanvasElement {
         this.window.onwheel = value;
     }
 }
-

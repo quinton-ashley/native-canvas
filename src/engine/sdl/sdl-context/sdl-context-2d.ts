@@ -2,7 +2,7 @@ import {Rgba} from '../color/rgba';
 import {SdlRenderer} from './sdl-renderer';
 import {SdlTexture} from './sdl-texture';
 import {
-    SDL_RenderCopy,
+    SDL_RenderTexture,
     SDL_TEXTUREACCESS_STATIC,
     SDL_TEXTUREACCESS_STREAMING,
     SDL_TEXTUREACCESS_TARGET, SDL_UpdateTexture

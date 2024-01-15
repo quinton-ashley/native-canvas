@@ -301,9 +301,9 @@ loadLibrary({
     SDL_GetKeyName: [string, [SDL_Keycode]],
     SDL_GetKeyFromName: [SDL_Keycode, [string]],
     SDL_StartTextInput: [voit, []],
-    SDL_IsTextInputActive: [uint32, []],
+    SDL_TextInputActive: [uint32, []],
     SDL_StopTextInput: [voit, []],
     SDL_SetTextInputRect: [voit, [SDL_Rect_ptr]],
     SDL_HasScreenKeyboardSupport: [uint32, []],
-    SDL_IsScreenKeyboardShown: [uint32, [SDL_Window_ptr]],
+    SDL_ScreenKeyboardShown: [uint32, [SDL_Window_ptr]],
 }, SDL);

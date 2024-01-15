@@ -6,11 +6,11 @@ import {
     SDL_DestroyRenderer,
     SDL_GetRenderTarget,
     SDL_RenderClear,
-    SDL_RenderCopy,
+    SDL_RenderTexture,
     SDL_RendererFlags,
-    SDL_RenderGetLogicalSize,
+    SDL_GetRenderLogicalPresentation,
     SDL_RenderPresent,
-    SDL_RenderSetLogicalSize,
+    SDL_SetRenderLogicalPresentation,
     SDL_SetRenderDrawColor,
     SDL_SetRenderTarget
 } from '../sdl';
@@ -22,7 +22,7 @@ export class SdlRenderer {
 
     constructor(private _rendererPtr: any) {
         this._color = Rgba.createWhite();
-        this._size = SDL_RenderGetLogicalSize(this._rendererPtr);
+        this._size = SDL_GetRenderLogicalPresentation(this._rendererPtr);
     }
 
     destroy(): void {
@@ -34,7 +34,7 @@ export class SdlRenderer {
     }
 
     copy(tt: SdlTexture, src: Rect, dest: Rect): void {
-        SDL_RenderCopy(this._rendererPtr, tt._texturePtr, src, dest);
+        SDL_RenderTexture(this._rendererPtr, tt._texturePtr, src, dest);
     }
 
     present() {
@@ -57,7 +57,7 @@ export class SdlRenderer {
 
     set size(size: { w: number, h: number }) {
         this._size = size;
-        SDL_RenderSetLogicalSize(this._rendererPtr, size.w, size.h);
+        SDL_SetRenderLogicalPresentation(this._rendererPtr, size.w, size.h);
     }
 
     get size(): { w: number, h: number } {

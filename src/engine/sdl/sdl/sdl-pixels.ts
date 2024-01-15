@@ -85,17 +85,16 @@ export const SDL_PixelFormat_ptr = ref.refType(SDL_PixelFormat);
 
 loadLibrary({
     SDL_GetPixelFormatName: [string, [Uint32]],
-    SDL_PixelFormatEnumToMasks: [uint32, [Uint32, int32_ptr, Uint32_ptr, Uint32_ptr, Uint32_ptr, Uint32_ptr]],
-    SDL_MasksToPixelFormatEnum: [Uint32, [int32, Uint32, Uint32, Uint32, Uint32]],
-    SDL_AllocFormat: [SDL_PixelFormat_ptr, [Uint32]],
-    SDL_FreeFormat: [voit, [SDL_PixelFormat_ptr]],
-    SDL_AllocPalette: [SDL_Palette_ptr, [int32]],
+    SDL_GetMasksForPixelFormatEnum: [uint32, [Uint32, int32_ptr, Uint32_ptr, Uint32_ptr, Uint32_ptr, Uint32_ptr]],
+    SDL_GetPixelFormatEnumForMasks: [Uint32, [int32, Uint32, Uint32, Uint32, Uint32]],
+    SDL_CreatePixelFormat: [SDL_PixelFormat_ptr, [Uint32]],
+    SDL_DestroyPixelFormat: [voit, [SDL_PixelFormat_ptr]],
+    SDL_CreatePalette: [SDL_Palette_ptr, [int32]],
     SDL_SetPixelFormatPalette: [int32, [SDL_PixelFormat_ptr, SDL_Palette_ptr]],
     SDL_SetPaletteColors: [int32, [SDL_Palette_ptr, SDL_Color_ptr, int32, int32]],
-    SDL_FreePalette: [voit, [SDL_Palette_ptr]],
+    SDL_DestroyPalette: [voit, [SDL_Palette_ptr]],
     SDL_MapRGB: [Uint32, [SDL_PixelFormat_ptr, Uint8, Uint8, Uint8]],
     SDL_MapRGBA: [Uint32, [SDL_PixelFormat_ptr, Uint8, Uint8, Uint8, Uint8]],
     SDL_GetRGB: [voit, [Uint32, SDL_PixelFormat_ptr, Uint8_ptr, Uint8_ptr, Uint8_ptr]],
-    SDL_GetRGBA: [voit, [Uint32, SDL_PixelFormat_ptr, Uint8_ptr, Uint8_ptr, Uint8_ptr, Uint8_ptr]],
-    SDL_CalculateGammaRamp: [voit, [float, Uint16_ptr]]
+    SDL_GetRGBA: [voit, [Uint32, SDL_PixelFormat_ptr, Uint8_ptr, Uint8_ptr, Uint8_ptr, Uint8_ptr]]
 }, SDL);

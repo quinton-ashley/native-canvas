@@ -33,47 +33,46 @@ export const SDL_Surface = Struct({
 export const SDL_Surface_ptr = ref.refType(SDL_Surface);
 export const SDL_blit = FFI.Function(int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]);
 
-export function SDL_CreateRGBSurfaceFrom(pixels: any, width: number, height: number, depth: number, pitch: number, Rmask: number, Gmask: number, Bmask: number, Amask: number) {
-    return SDL.SDL_CreateRGBSurfaceFrom(pixels, width, height, depth, pitch, Rmask, Gmask, Bmask, Amask);
+export function SDL_CreateSurface(pixels: any, width: number, height: number, depth: number, pitch: number, Rmask: number, Gmask: number, Bmask: number, Amask: number) {
+    return SDL.SDL_CreateSurface(pixels, width, height, depth, pitch, Rmask, Gmask, Bmask, Amask);
 }
 
 export function SDL_CreateTextureFromSurface(rendererPtr: any, sdlSurfacePtr: any) {
     return SDL.SDL_CreateTextureFromSurface(rendererPtr, sdlSurfacePtr);
 }
 
-export function SDL_FreeSurface(surfacePtr: any) {
-    SDL.SDL_FreeSurface(surfacePtr);
+export function SDL_DestroySurface(surfacePtr: any) {
+    SDL.SDL_DestroySurface(surfacePtr);
 }
 
 loadLibrary({
     SDL_CreateTextureFromSurface: [SDL_Texture_ptr, [SDL_Renderer_ptr, SDL_Surface_ptr]],
-    SDL_CreateRGBSurface: [SDL_Surface_ptr, [Uint32, int32, int32, int32, Uint32, Uint32, Uint32, Uint32]],
-    SDL_CreateRGBSurfaceFrom: [SDL_Surface_ptr, [voit_ptr, int32, int32, int32, int32, Uint32, Uint32, Uint32, Uint32]],
-    SDL_FreeSurface: [voit, [SDL_Surface_ptr]],
+    SDL_CreateSurface: [SDL_Surface_ptr, [Uint32, int32, int32, int32, Uint32, Uint32, Uint32, Uint32]],
+    SDL_DestroySurface: [voit, [SDL_Surface_ptr]],
     SDL_SetSurfacePalette: [int32, [SDL_Surface_ptr, SDL_Palette_ptr]],
     SDL_LockSurface: [int32, [SDL_Surface_ptr]],
     SDL_UnlockSurface: [voit, [SDL_Surface_ptr]],
     // SDL_LoadBMP_RW: [SDL_Surface_ptr, [SDL_RWops_ptr, int32]],
     // SDL_SaveBMP_RW: [int32, [SDL_Surface_ptr, SDL_RWops_ptr, int32]],
     SDL_SetSurfaceRLE: [int32, [SDL_Surface_ptr, int32]],
-    SDL_SetColorKey: [int32, [SDL_Surface_ptr, int32, Uint32]],
-    SDL_GetColorKey: [int32, [SDL_Surface_ptr, Uint32_ptr]],
+    SDL_SetSurfaceColorKey: [int32, [SDL_Surface_ptr, int32, Uint32]],
+    SDL_GetSurfaceColorKey: [int32, [SDL_Surface_ptr, Uint32_ptr]],
     SDL_SetSurfaceColorMod: [int32, [SDL_Surface_ptr, Uint8, Uint8, Uint8]],
     SDL_GetSurfaceColorMod: [int32, [SDL_Surface_ptr, Uint8_ptr, Uint8_ptr, Uint8_ptr]],
     SDL_SetSurfaceAlphaMod: [int32, [SDL_Surface_ptr, Uint8]],
     SDL_GetSurfaceAlphaMod: [int32, [SDL_Surface_ptr, Uint8_ptr]],
     SDL_SetSurfaceBlendMode: [int32, [SDL_Surface_ptr, uint32]],
     SDL_GetSurfaceBlendMode: [int32, [SDL_Surface_ptr, uint32_ptr]],
-    SDL_SetClipRect: [uint32, [SDL_Surface_ptr, SDL_Rect_ptr]],
-    SDL_GetClipRect: [voit, [SDL_Surface_ptr, SDL_Rect_ptr]],
+    SDL_SetSurfaceClipRect: [uint32, [SDL_Surface_ptr, SDL_Rect_ptr]],
+    SDL_GetSurfaceClipRect: [voit, [SDL_Surface_ptr, SDL_Rect_ptr]],
     SDL_ConvertSurface: [SDL_Surface_ptr, [SDL_Surface_ptr, SDL_PixelFormat_ptr, Uint32]],
     SDL_ConvertSurfaceFormat: [SDL_Surface_ptr, [SDL_Surface_ptr, Uint32, Uint32]],
     SDL_ConvertPixels: [int32, [int32, int32, Uint32, voit_ptr, int32, Uint32, voit_ptr, int32]],
-    SDL_FillRect: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, Uint32]],
-    SDL_FillRects: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, int32, Uint32]],
-    SDL_UpperBlit: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
-    SDL_LowerBlit: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
+    SDL_FillSurfaceRect: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, Uint32]],
+    SDL_FillSurfaceRects: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, int32, Uint32]],
+    SDL_BlitSurface: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
+    SDL_BlitSurfaceUnchecked: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
     SDL_SoftStretch: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
-    SDL_UpperBlitScaled: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
-    SDL_LowerBlitScaled: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
+    SDL_BlitSurfaceScaled: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
+    SDL_BlitSurfaceUncheckedScaled: [int32, [SDL_Surface_ptr, SDL_Rect_ptr, SDL_Surface_ptr, SDL_Rect_ptr]],
 }, SDL);

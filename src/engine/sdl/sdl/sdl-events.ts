@@ -14,7 +14,7 @@ import {
     voit_ptr,
     voit_ptr_ptr
 } from './types';
-import {SDL_GestureID} from './sdl-gesture';
+// import {SDL_GestureID} from './sdl-gesture';
 import {SDL_FingerID, SDL_TouchID} from './sdl-touch';
 import {SDL_JoystickID} from './sdl-joystick';
 import {SDL_Keysym} from './sdl-keyboard';
@@ -48,7 +48,7 @@ export enum SDL_EventType {
     SDL_MOUSEBUTTONUP = 1026,
     SDL_MOUSEWHEEL = 1027,
     SDL_JOYAXISMOTION = 1536,
-    SDL_JOYBALLMOTION = 1537,
+    // SDL_JOYBALLMOTION = 1537,
     SDL_JOYHATMOTION = 1538,
     SDL_JOYBUTTONDOWN = 1539,
     SDL_JOYBUTTONUP = 1540,
@@ -63,9 +63,9 @@ export enum SDL_EventType {
     SDL_FINGERDOWN = 1792,
     SDL_FINGERUP = 1793,
     SDL_FINGERMOTION = 1794,
-    SDL_DOLLARGESTURE = 2048,
-    SDL_DOLLARRECORD = 2049,
-    SDL_MULTIGESTURE = 2050,
+    // SDL_DOLLARGESTURE = 2048,
+    // SDL_DOLLARRECORD = 2049,
+    // SDL_MULTIGESTURE = 2050,
     SDL_CLIPBOARDUPDATE = 2304,
     SDL_DROPFILE = 4096,
     SDL_DROPTEXT,
@@ -109,8 +109,8 @@ export function SDL_AddEventWatch(filterFunctionPtr: any, dataPtr: any) {
     SDL.SDL_AddEventWatch(filterFunctionPtr, dataPtr);
 }
 
-export function SDL_EventState(flag: number, value: number) {
-    return SDL.SDL_EventState(flag, value);
+export function SDL_SetEventEnabled(flag: number, value: number) {
+    return SDL.SDL_SetEventEnabled(flag, value);
 
 }
 
@@ -211,17 +211,17 @@ export const SDL_JoyAxisEvent = Struct({
     padding4: Uint16
 });
 
-export const SDL_JoyBallEvent = Struct({
-    type: Uint32,
-    timestamp: Uint32,
-    which: SDL_JoystickID,
-    ball: Uint8,
-    padding1: Uint8,
-    padding2: Uint8,
-    padding3: Uint8,
-    xrel: Sint16,
-    yrel: Sint16
-});
+// export const SDL_JoyBallEvent = Struct({
+//     type: Uint32,
+//     timestamp: Uint32,
+//     which: SDL_JoystickID,
+//     ball: Uint8,
+//     padding1: Uint8,
+//     padding2: Uint8,
+//     padding3: Uint8,
+//     xrel: Sint16,
+//     yrel: Sint16
+// });
 
 export const SDL_JoyHatEvent = Struct({
     type: Uint32,
@@ -299,29 +299,29 @@ export const SDL_TouchFingerEvent = Struct({
     pressure: float,
 });
 
-export const SDL_MultiGestureEvent = Struct({
-    type: Uint32,
-    timestamp: Uint32,
-    touchId: SDL_TouchID,
-    dTheta: float,
-    dDist: float,
-    x: float,
-    y: float,
-    numFingers: Uint16,
-    padding: Uint16,
-});
+// export const SDL_MultiGestureEvent = Struct({
+//     type: Uint32,
+//     timestamp: Uint32,
+//     touchId: SDL_TouchID,
+//     dTheta: float,
+//     dDist: float,
+//     x: float,
+//     y: float,
+//     numFingers: Uint16,
+//     padding: Uint16,
+// });
 
 
-export const SDL_DollarGestureEvent = Struct({
-    type: Uint32,
-    timestamp: Uint32,
-    touchId: SDL_TouchID,
-    gestureId: SDL_GestureID,
-    numFingers: Uint32,
-    error: float,
-    x: float,
-    y: float,
-});
+// export const SDL_DollarGestureEvent = Struct({
+//     type: Uint32,
+//     timestamp: Uint32,
+//     touchId: SDL_TouchID,
+//     gestureId: SDL_GestureID,
+//     numFingers: Uint32,
+//     error: float,
+//     x: float,
+//     y: float,
+// });
 
 export const SDL_DropEvent = Struct({
     type: Uint32,
@@ -372,7 +372,7 @@ export const SDL_Event = Union({
     button: SDL_MouseButtonEvent,
     wheel: SDL_MouseWheelEvent,
     jaxis: SDL_JoyAxisEvent,
-    jball: SDL_JoyBallEvent,
+    // jball: SDL_JoyBallEvent,
     jhat: SDL_JoyHatEvent,
     jbutton: SDL_JoyButtonEvent,
     jdevice: SDL_JoyDeviceEvent,
@@ -384,8 +384,8 @@ export const SDL_Event = Union({
     user: SDL_UserEvent,
     syswm: SDL_SysWMEvent,
     tfinger: SDL_TouchFingerEvent,
-    mgesture: SDL_MultiGestureEvent,
-    dgesture: SDL_DollarGestureEvent,
+    // mgesture: SDL_MultiGestureEvent,
+    // dgesture: SDL_DollarGestureEvent,
     drop: SDL_DropEvent,
     padding: c__U_SDL_Event_FI_padding_arr,
 });
@@ -412,7 +412,6 @@ loadLibrary({
     SDL_AddEventWatch: [voit, [SDL_EventFilter, voit_ptr]],
     SDL_DelEventWatch: [voit, [SDL_EventFilter, voit_ptr]],
     SDL_FilterEvents: [voit, [SDL_EventFilter, voit_ptr]],
-    SDL_EventState: [Uint8, [Uint32, int32]],
+    SDL_SetEventEnabled: [Uint8, [Uint32, int32]],
     SDL_RegisterEvents: [Uint32, [int32]],
 }, SDL);
-

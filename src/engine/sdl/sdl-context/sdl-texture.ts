@@ -1,7 +1,7 @@
 import {
-    SDL_BlendMode, SDL_CreateRGBSurfaceFrom,
+    SDL_BlendMode, SDL_CreateSurface,
     SDL_CreateTexture, SDL_CreateTextureFromSurface,
-    SDL_DestroyTexture, SDL_FreeSurface,
+    SDL_DestroyTexture, SDL_DestroySurface,
     SDL_MasksToPixelFormatEnum,
     SDL_QueryTexture, SDL_SetTextureBlendMode,
     SDL_UpdateTexture
@@ -56,7 +56,7 @@ export class SdlTexture {
         const depth = 32;
         const pitch = 4 * width;
 
-        const surfacePtr = SDL_CreateRGBSurfaceFrom(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
+        const surfacePtr = SDL_CreateSurface(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
         return surfacePtr;
     }
 
@@ -68,11 +68,11 @@ export class SdlTexture {
         const depth = 32;
         const pitch = 4 * width;
 
-        const surfacePtr = SDL_CreateRGBSurfaceFrom(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
+        const surfacePtr = SDL_CreateSurface(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
 
         const texturePtr = SDL_CreateTextureFromSurface(rendererPtr, surfacePtr);
 
-        SDL_FreeSurface(surfacePtr);
+        SDL_DestroySurface(surfacePtr);
 
         return new SdlTexture(texturePtr);
     }

@@ -61,6 +61,6 @@ loadLibrary({
     SDL_SetCursor: [voit, [SDL_Cursor_ptr]],
     SDL_GetCursor: [SDL_Cursor_ptr, []],
     SDL_GetDefaultCursor: [SDL_Cursor_ptr, []],
-    SDL_FreeCursor: [voit, [SDL_Cursor_ptr]],
+    SDL_DestroyCursor: [voit, [SDL_Cursor_ptr]],
     SDL_ShowCursor: [int32, [int32]],
 }, SDL);
